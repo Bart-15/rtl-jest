@@ -1,32 +1,16 @@
-import { HttpResponse, http } from 'msw';
+import { rest } from 'msw';
 
 export const handlers = [
-  http.get('https://dummyjson.com/products', () => {
-    return HttpResponse.json({
-      products: [
-        {
-          id: 1,
-          title: 'iPhone 9',
-          description: 'An apple mobile which is nothing like apple',
-          price: 549,
-          discountPercentage: 12.96,
-          rating: 4.69,
-          stock: 94,
-          brand: 'Apple',
-          category: 'smartphones',
-          thumbnail: 'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg',
-          images: [
-            'https://cdn.dummyjson.com/product-images/1/1.jpg',
-            'https://cdn.dummyjson.com/product-images/1/2.jpg',
-            'https://cdn.dummyjson.com/product-images/1/3.jpg',
-            'https://cdn.dummyjson.com/product-images/1/4.jpg',
-            'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg',
-          ],
-        },
-      ],
-      total: 100,
-      skip: 0,
-      limit: 1,
-    });
+  rest.get('/api/todos', (req, rest, ctx) => {
+    return rest(
+      ctx.status(200),
+      ctx.json([
+        { id: 1, text: 'Buy groceries', completed: false },
+        { id: 2, text: 'Complete the project report', completed: true },
+        { id: 3, text: 'Call the dentist', completed: false },
+        { id: 4, text: 'Schedule a meeting with the team', completed: true },
+        { id: 5, text: 'Pay electricity bill', completed: false },
+      ]),
+    );
   }),
 ];

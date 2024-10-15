@@ -1,4 +1,4 @@
-import TodoList from '@/components/TodoList';
+import TodoList from '@/components/todo/Todo';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 describe('Todo List Component', () => {
