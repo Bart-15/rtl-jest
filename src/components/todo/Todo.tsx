@@ -4,11 +4,8 @@ import { Todo } from '@/types/todo.types';
 import { useFetchTodos } from './hooks/useFetchTodo';
 import TodoAddInput from './TodoAddInput';
 import TodoItem from './TodoList';
-type TodoListProps = {
-  todoList: Todo[];
-};
 
-const TodoList = ({ todoList }: TodoListProps) => {
+const TodoList = () => {
   const { data, isLoading } = useFetchTodos();
 
   const todos = data?.data as Todo[];

@@ -1,8 +1,8 @@
 import { rest } from 'msw';
 
 export const handlers = [
-  rest.get('/api/todos', (req, rest, ctx) => {
-    return rest(
+  rest.get('/api/todos', (req, res, ctx) => {
+    return res(
       ctx.status(200),
       ctx.json([
         { id: 1, text: 'Buy groceries', completed: false },

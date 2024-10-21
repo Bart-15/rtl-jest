@@ -6,10 +6,17 @@
 import '@testing-library/jest-dom';
 
 import 'whatwg-fetch';
-import { server } from './__tests__/__mocks__/msw/server';
 
-beforeAll(() => server.listen());
+import { mswServer } from './__tests__/__mocks__/msw/mswServer';
 
-afterEach(() => server.resetHandlers());
+beforeAll(() => {
+  mswServer.listen();
+});
 
-afterAll(() => server.close());
+afterAll(() => {
+  mswServer.close();
+});
+
+afterEach(() => {
+  mswServer.resetHandlers();
+});

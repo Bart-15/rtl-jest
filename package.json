@@ -60,5 +60,8 @@
     "typescript": "^5",
     "undici": "^6.19.8",
     "whatwg-fetch": "^3.6.20"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

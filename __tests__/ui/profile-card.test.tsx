@@ -6,7 +6,7 @@ describe('Profile Card Component', () => {
     cleanup();
   });
 
-  test('should render name, job title, and follow button correctly', () => {
+  it('should render name, job title, and follow button correctly', () => {
     render(<ProfileCard name="Bart" jobTitle="ReactJs Developer" />);
 
     const title = screen.getByRole('heading', {
@@ -24,7 +24,7 @@ describe('Profile Card Component', () => {
     expect(jobTitle).toBeInTheDocument();
   });
 
-  test(`should show "Unfollow" button if the user is initially following`, () => {
+  it(`should show "Unfollow" button if the user is initially following`, () => {
     render(
       <ProfileCard
         name="Bart"
@@ -42,7 +42,7 @@ describe('Profile Card Component', () => {
     expect(followBtn).not.toBeInTheDocument();
   });
 
-  test(`should toggle between "Follow" and "Unfollow" on button click`, () => {
+  it(`should toggle between "Follow" and "Unfollow" on button click`, () => {
     render(<ProfileCard name="Bart" jobTitle="ReactJs Developer" />);
 
     const button = screen.getByRole('button', {

@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { render } from '@testing-library/react';
 
 export function generateQueryClient(): QueryClient {
   return new QueryClient({
@@ -20,9 +19,9 @@ export const ReactQueryProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  return render(
+  return (
     <QueryClientProvider client={testQueryClient}>
       {children}
-    </QueryClientProvider>,
+    </QueryClientProvider>
   );
 };

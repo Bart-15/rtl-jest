@@ -26,11 +26,11 @@ describe('Register Component', () => {
     cleanup();
   });
 
-  test('should display register content display properly', () => {
+  it('should display register content display properly', () => {
     render(<Reigster />);
   });
 
-  test('should intitialize form with default values', () => {
+  it('should intitialize form with default values', () => {
     const { result } = renderHook(() =>
       useForm<registerUserPayload>({
         mode: 'onSubmit',
@@ -42,7 +42,7 @@ describe('Register Component', () => {
     expect(result.current.getValues()).toEqual(initFormValues);
   });
 
-  test('should show validation errors when submitting empty fields', async () => {
+  it('should show validation errors when submitting empty fields', async () => {
     const { getByText } = render(<Reigster />);
 
     fireEvent.click(getByText('Save'));
@@ -57,7 +57,7 @@ describe('Register Component', () => {
     });
   });
 
-  test('should show validation errors when password and confirm password dont match', async () => {
+  it('should show validation errors when password and confirm password dont match', async () => {
     const { getByText } = render(<Reigster />);
 
     const pwdInput = screen.getByPlaceholderText('Password');
@@ -73,7 +73,7 @@ describe('Register Component', () => {
     });
   });
 
-  test(`should Password don't match message will disappear if password and confirm password value is the same`, () => {
+  it(`should Password don't match message will disappear if password and confirm password value is the same`, () => {
     const { getByText } = render(<Reigster />);
 
     const pwdInput = screen.getByPlaceholderText('Password');
