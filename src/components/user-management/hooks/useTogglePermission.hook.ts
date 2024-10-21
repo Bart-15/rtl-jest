@@ -48,7 +48,7 @@ const rolesData: RolePermissions[] = [
   },
   {
     role: 'CTO',
-    active: true,
+    active: false,
     permissions: {
       allAccess: false,
       create: false,

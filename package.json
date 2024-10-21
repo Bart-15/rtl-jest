@@ -58,7 +58,8 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "undici": "^6.19.8"
+    "undici": "^6.19.8",
+    "whatwg-fetch": "^3.6.20"
   },
   "msw": {
     "workerDirectory": "public"
