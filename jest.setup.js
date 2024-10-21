@@ -4,19 +4,3 @@
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-
-import 'whatwg-fetch';
-
-import { mswServer } from './__tests__/__mocks__/msw/mswServer';
-
-beforeAll(() => {
-  mswServer.listen();
-});
-
-afterAll(() => {
-  mswServer.close();
-});
-
-afterEach(() => {
-  mswServer.resetHandlers();
-});
