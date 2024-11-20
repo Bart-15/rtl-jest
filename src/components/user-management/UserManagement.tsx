@@ -7,7 +7,10 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Checkbox } from '../ui/checkbox';
-import { useTogglePermissions } from './hooks/useTogglePermission.hook';
+import {
+  RolePermissions,
+  useTogglePermissions,
+} from './hooks/useTogglePermission.hook';
 
 const headers: string[] = [
   'User Role',
@@ -47,40 +50,31 @@ const UserManagement = () => {
                   <p>{role.role}</p>
                 </TableCell>
 
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.allAccess}
-                    onCheckedChange={() => togglePermissions(idx, 'allAccess')}
-                  />
-                </TableCell>
+                {Object.keys(role.permissions).map((permission) => {
+                  const checkboxId = `role-${idx}-${permission}`; // Unique ID
+                  const checkBoxIdx = roles.findIndex(
+                    (r) => r.role === role.role,
+                  );
 
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.create}
-                    onCheckedChange={() => togglePermissions(idx, 'create')}
-                  />
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.read}
-                    onCheckedChange={() => togglePermissions(idx, 'read')}
-                  />
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.update}
-                    onCheckedChange={() => togglePermissions(idx, 'update')}
-                  />
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.delete}
-                    onCheckedChange={() => togglePermissions(idx, 'delete')}
-                  />
-                </TableCell>
+                  return (
+                    <TableCell className="text-center" key={checkboxId}>
+                      <Checkbox
+                        id={checkboxId}
+                        checked={
+                          role.permissions[
+                            permission as keyof RolePermissions['permissions']
+                          ]
+                        }
+                        onCheckedChange={() =>
+                          togglePermissions(
+                            checkBoxIdx,
+                            permission as keyof RolePermissions['permissions'],
+                          )
+                        }
+                      />
+                    </TableCell>
+                  );
+                })}
               </TableRow>
             ))}
         </TableBody>
