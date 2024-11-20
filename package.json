@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "test": "jest --watch"
+    "test": "jest"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

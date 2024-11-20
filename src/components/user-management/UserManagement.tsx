@@ -7,7 +7,10 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Checkbox } from '../ui/checkbox';
-import { useTogglePermissions } from './hooks/useTogglePermission.hook';
+import {
+  RolePermissions,
+  useTogglePermissions,
+} from './hooks/useTogglePermission.hook';
 
 const headers: string[] = [
   'User Role',
@@ -47,7 +50,33 @@ const UserManagement = () => {
                   <p>{role.role}</p>
                 </TableCell>
 
-                <TableCell className="text-center">
+                {Object.keys(role.permissions).map((permission) => {
+                  const checkboxId = `role-${idx}-${permission}`; // Unique ID
+                  const checkBoxIdx = roles.findIndex(
+                    (r) => r.role === role.role,
+                  );
+
+                  return (
+                    <TableCell className="text-center" key={checkboxId}>
+                      <Checkbox
+                        id={checkboxId}
+                        checked={
+                          role.permissions[
+                            permission as keyof RolePermissions['permissions']
+                          ]
+                        }
+                        onCheckedChange={() =>
+                          togglePermissions(
+                            checkBoxIdx,
+                            permission as keyof RolePermissions['permissions'],
+                          )
+                        }
+                      />
+                    </TableCell>
+                  );
+                })}
+
+                {/* <TableCell className="text-center">
                   <Checkbox
                     checked={role.permissions.allAccess}
                     onCheckedChange={() => togglePermissions(idx, 'allAccess')}
@@ -80,7 +109,7 @@ const UserManagement = () => {
                     checked={role.permissions.delete}
                     onCheckedChange={() => togglePermissions(idx, 'delete')}
                   />
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
         </TableBody>
