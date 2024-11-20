@@ -75,41 +75,6 @@ const UserManagement = () => {
                     </TableCell>
                   );
                 })}
-
-                {/* <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.allAccess}
-                    onCheckedChange={() => togglePermissions(idx, 'allAccess')}
-                  />
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.create}
-                    onCheckedChange={() => togglePermissions(idx, 'create')}
-                  />
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.read}
-                    onCheckedChange={() => togglePermissions(idx, 'read')}
-                  />
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.update}
-                    onCheckedChange={() => togglePermissions(idx, 'update')}
-                  />
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Checkbox
-                    checked={role.permissions.delete}
-                    onCheckedChange={() => togglePermissions(idx, 'delete')}
-                  />
-                </TableCell> */}
               </TableRow>
             ))}
         </TableBody>
