@@ -42,6 +42,7 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   isLoading?: boolean;
+  onClick?: () => void;
   children: React.ReactNode;
 }
 
